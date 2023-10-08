@@ -29,11 +29,14 @@ To run the application locally, follow these steps:
 ## Usage
 Creating Form Fields:
 
-1. Click the "Add" button to add a new form field.
+1. Click the "Add" button to add a new form field of any type(text input, textarea, dropdown, checkbox, radio).
 2. Select the type of form field you want to add from the dropdown menu.
 3. Customize the form field as needed.
+- Create any type of form filed by selecting from the dropdown.
+- Change label of form fields, form title, dropdown options as per your requiremnet.
+
 4. Deleting Form Fields:
-- To remove a form field, click the "Del" button next to it.
+- To remove a form field, click the "Del" button below the form field.
 
 5. Submitting the Form:
 
