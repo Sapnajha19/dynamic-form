@@ -10,6 +10,9 @@ function FormBuilder() {
   const [selectedFieldTypes, setSelectedFieldTypes] = useState([]);
   const [formConfig, setFormConfig] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isWarning, setIsWarning] = useState(false);
+  const [warningMessage, setWarningMessage] = useState("");
+
   const handleAddFormField = () => {
     setAdd(true);
   };
@@ -34,10 +37,15 @@ function FormBuilder() {
   };
   // Function to save form configuration as JSON
   const saveFormConfig = () => {
-    const jsonConfig = JSON.stringify(formConfig);
-    localStorage.setItem("formConfig", jsonConfig);
-    loadFormConfig();
-    setIsSubmitted(true);
+    if (selectedFieldTypes.length === 0) {
+      setIsWarning(true);
+      setWarningMessage("Select at least one form field before submitting");
+    } else {
+      const jsonConfig = JSON.stringify(formConfig);
+      localStorage.setItem("formConfig", jsonConfig);
+      loadFormConfig();
+      setIsSubmitted(true);
+    }
   };
 
   // Function to load form configuration from JSON
@@ -49,14 +57,17 @@ function FormBuilder() {
     console.log(formConfig);
   };
   const handleCreateNewForm = () => {
-    setIsSubmitted(false)
-    setSelectedFieldTypes([])
+    setIsSubmitted(false);
+    setIsWarning(false);
+    setSelectedFieldTypes([]);
   };
   return (
     <div>
       {isSubmitted ? (
         <div className="flex flex-col justify-center items-center h-screen gap-4">
-          <p className="text-3xl font-bold">Thank you, form is submitted successfully!!</p>
+          <p className="text-3xl font-bold">
+            Thank you, form is submitted successfully!!
+          </p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -71,9 +82,12 @@ function FormBuilder() {
               d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-            <button className="bg-blue-500 text-white p-2 rounded-md" onClick={handleCreateNewForm}>
-              Create new form
-            </button>
+          <button
+            className="bg-blue-500 text-white p-2 rounded-md"
+            onClick={handleCreateNewForm}
+          >
+            Create new form
+          </button>
         </div>
       ) : (
         <div className="flex flex-col items-center h-screen">
@@ -154,6 +168,9 @@ function FormBuilder() {
                   )}
                 </div>
               ))}
+              {isWarning && selectedFieldTypes.length === 0 && (
+                <p className="text-[red]">{warningMessage}</p>
+              )}
               <button
                 className="bg-purple-900 text-white p-2 rounded-md border border-gray-400 hover:bg-white hover:text-black hover:border-gray-700"
                 onClick={saveFormConfig}
