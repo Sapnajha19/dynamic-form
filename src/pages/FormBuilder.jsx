@@ -4,10 +4,8 @@ import TextArea from "../components/TextArea";
 import DropDown from "../components/DropDown";
 import CheckBox from "../components/CheckBox";
 import RadioButton from "../components/RadioButton";
-import { Link, useNavigate } from "react-router-dom";
 
 function FormBuilder() {
-  const navigate = useNavigate();
   const [add, setAdd] = useState(false);
   const [selectedFieldTypes, setSelectedFieldTypes] = useState([]);
   const [formConfig, setFormConfig] = useState([]);
@@ -58,7 +56,7 @@ function FormBuilder() {
     <div>
       {isSubmitted ? (
         <div className="flex flex-col justify-center items-center h-screen gap-4">
-          <p className="text-3xl font-bold">Thank you for submittting!</p>
+          <p className="text-3xl font-bold">Thank you, form is submitted successfully!!</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
