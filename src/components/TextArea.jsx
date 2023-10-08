@@ -2,8 +2,23 @@ import React, { useState } from "react";
 
 function TextArea() {
   const [row, SetRow] = useState(2);
+  const [isWarning, setIswarning] = useState(false);
+  const [warningMessage, setWarningMessage] = useState("");
+
   const handleRowChange = (event) => {
-    SetRow(event.target.value);
+    if (
+      (event.target.value !== "" && event.target.value <= 0) ||
+      event.target.value > 10
+    ) {
+      setIswarning(true);
+      setWarningMessage("Invalid row size, enter between 1-10");
+    } else if (event.target.value === "") {
+      setIswarning(false); 
+    } else {
+      setIswarning(false);
+      setWarningMessage("");
+      SetRow(event.target.value);
+    }
   };
   return (
     <div className="flex flex-col gap-4">
@@ -27,6 +42,7 @@ function TextArea() {
         rows={row}
         className="w-full p-1.5 bg-grey outline-none border border-gray border-[1px] rounded-md"
       />
+      {isWarning && <p className="text-[red]">{warningMessage}</p>}
     </div>
   );
 }
