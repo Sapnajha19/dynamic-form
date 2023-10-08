@@ -24,14 +24,14 @@ function DropDown() {
           className="bg-none text-black outline-none"
         />
         <button
-          className="bg-black text-white p-2 rounded-md w-[200px]"
+          className="bg-purple-100 text-purple-900 text-sm font-bold w-20 p-1 rounded-md"
           onClick={handleAddFormField}
         >
           Add more
         </button>
       </div>
       <div className="flex flex-col">
-        <select className="bg-gray-100 border border-black rounded-md">
+        <select className="border border-black rounded-[4px]">
           {options.map((option, index) => (
             <option key={index}>{option}</option>
           ))}

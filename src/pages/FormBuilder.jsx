@@ -50,7 +50,7 @@ function FormBuilder() {
   return (
     <div className="flex flex-col items-center h-screen">
       <div className="flex flex-row items-start justify-start">
-        <div className="bg-white rounded-md p-10 border border-grey border-[1px] w-[500px] h-full flex flex-col gap-4 border-black border-t-[20px]">
+        <div className="bg-white rounded-md p-10 border border-black border-[1px] w-[500px] h-full flex flex-col gap-4 border-purple-500 border-t-[20px]">
           <input
             type="text"
             defaultValue="Untitled form"
@@ -67,47 +67,52 @@ function FormBuilder() {
               {type === "text input" && (
                 <div>
                   <TextInput />
-                  <button className="" onClick={() => handleDelete(index)}>
-                    Del
+                  <button className="bg-[gray] text-white text-sm rounded-sm px-1" onClick={() => handleDelete(index)}>
+                    Delete
                   </button>
+                  <div className="w-full h-[1px] bg-purple-100 mt-2"></div>
                 </div>
               )}
               {type === "text-area input" && (
                 <div>
                   <TextArea />
-                  <button className="" onClick={() => handleDelete(index)}>
-                    Del
+                  <button className="bg-[gray] text-white text-sm rounded-sm px-1" onClick={() => handleDelete(index)}>
+                    Delete
                   </button>
+                  <div className="w-full h-[1px] bg-purple-100 mt-2"></div>
                 </div>
               )}
               {type === "dropdown" && (
                 <div>
                   <DropDown />
-                  <button className="" onClick={() => handleDelete(index)}>
-                    Del
+                  <button className="bg-[gray] text-white text-sm rounded-sm px-1" onClick={() => handleDelete(index)}>
+                    Delete
                   </button>
+                  <div className="w-full h-[1px] bg-purple-100 mt-2"></div>
                 </div>
               )}
               {type === "checkbox" && (
                 <div>
                   <CheckBox />
-                  <button className="" onClick={() => handleDelete(index)}>
-                    Del
+                  <button className="bg-[gray] text-white text-sm rounded-sm px-1" onClick={() => handleDelete(index)}>
+                    Delete
                   </button>
+                  <div className="w-full h-[1px] bg-purple-100 mt-2"></div>
                 </div>
               )}
               {type === "radio buttons" && (
                 <div>
                   <RadioButton />
-                  <button className="" onClick={() => handleDelete(index)}>
-                    Del
+                  <button className="bg-[gray] text-white text-sm rounded-sm px-1" onClick={() => handleDelete(index)}>
+                    Delete
                   </button>
+                  <div className="w-full h-[1px] bg-purple-100 mt-2"></div>
                 </div>
               )}
             </div>
           ))}
           <button
-            className="bg-black text-white p-2 rounded-md border border-gray-400 hover:bg-white hover:text-black hover:border-gray-700"
+            className="bg-purple-900 text-white p-2 rounded-md border border-gray-400 hover:bg-white hover:text-black hover:border-gray-700"
             onClick={saveFormConfig}
           >
             Submit
@@ -121,10 +126,10 @@ function FormBuilder() {
             Add
           </button>
           {add && (
-            <div className="w-[350px] h-[250px] bg-white border border-gray border-1px rounded-sm">
-              <label>Enter type of form field you want to create</label>
+            <div className="flex flex-col">
+              <label className="font-semibold">Enter type of form field you want to create</label>
               <select
-                className="bg-gray-100 border border-black rounded-md"
+                className="border border-black rounded-[4px] mt-2"
                 onChange={handleChange}
               >
                 <option>Select an input type field</option>
