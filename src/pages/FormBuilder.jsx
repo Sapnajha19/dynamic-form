@@ -26,7 +26,7 @@ function FormBuilder() {
     setSelectedFieldTypes(updatedFieldTypes);
   };
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center h-screen">
       <div className="flex flex-row items-start justify-start">
         <div className="bg-white rounded-md p-10 border border-grey border-[1px] w-[500px] h-full flex flex-col gap-4 border-black border-t-[20px]">
           <input
