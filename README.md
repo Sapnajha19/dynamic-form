@@ -8,6 +8,8 @@
 
 - **Delete Form Fields**: Easily remove form fields that are no longer needed.
 
+- **Submit Forms**: Users can create a general form of their required form fields and submit them to convert into json and store it in local browser cache.
+
 ## Getting Started
 
 To run the application locally, follow these steps:
@@ -32,6 +34,11 @@ Creating Form Fields:
 3. Customize the form field as needed.
 4. Deleting Form Fields:
 - To remove a form field, click the "Del" button next to it.
+
+5. Submitting the Form:
+
+- Fill out the form with fields as desired.
+- Click the "Submit" button to convert the form configuration into json.
 
 
 
