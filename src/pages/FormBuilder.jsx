@@ -8,13 +8,16 @@ import RadioButton from "../components/RadioButton";
 function FormBuilder() {
   const [add, setAdd] = useState(false);
   const [selectedFieldTypes, setSelectedFieldTypes] = useState([]);
+  const [formConfig, setFormConfig] = useState([]);
+
   const handleAddFormField = () => {
     setAdd(true);
   };
   const handleChange = (event) => {
     const selectedType = event.target.value;
     setSelectedFieldTypes([...selectedFieldTypes, selectedType]);
-
+    // Update form configuration
+    setFormConfig([...formConfig, { type: selectedType, id: Date.now() }]);
     setAdd(false);
   };
 
@@ -24,6 +27,25 @@ function FormBuilder() {
     // Remove the element at the specified index
     updatedFieldTypes.splice(index, 1);
     setSelectedFieldTypes(updatedFieldTypes);
+    // Update form configuration
+    const updatedConfig = [...formConfig];
+    updatedConfig.splice(index, 1);
+    setFormConfig(updatedConfig);
+  };
+  // Function to save form configuration as JSON
+  const saveFormConfig = () => {
+    const jsonConfig = JSON.stringify(formConfig);
+    localStorage.setItem("formConfig", jsonConfig);
+    loadFormConfig();
+  };
+
+  // Function to load form configuration from JSON
+  const loadFormConfig = () => {
+    const jsonConfig = localStorage.getItem("formConfig");
+    if (jsonConfig) {
+      setFormConfig(JSON.parse(jsonConfig));
+    }
+    console.log(formConfig)
   };
   return (
     <div className="flex flex-col items-center h-screen">
@@ -84,7 +106,10 @@ function FormBuilder() {
               )}
             </div>
           ))}
-          <button className="bg-black text-white p-2 rounded-md border border-gray-400 hover:bg-white hover:text-black hover:border-gray-700">
+          <button
+            className="bg-black text-white p-2 rounded-md border border-gray-400 hover:bg-white hover:text-black hover:border-gray-700"
+            onClick={saveFormConfig}
+          >
             Submit
           </button>
         </div>
@@ -113,6 +138,9 @@ function FormBuilder() {
           )}
         </div>
       </div>
+      {/* Add buttons to save and load form configuration */}
+      {/* <button onClick={saveFormConfig}>Save Form Configuration</button> */}
+      {/* <button onClick={loadFormConfig}>Load Form Configuration</button> */}
     </div>
   );
 }
